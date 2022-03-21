@@ -1,0 +1,9 @@
+<form action="/stores" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <h2>What's is your new store?</h2>
+  <p>(in terms of name)</p>
+  <input type='text' name='store[name]'/><br>
+  <p>describe it to me</p>
+  <textarea name="store[description]"></textarea><br>
+  <input type='submit'/>
+</form>
