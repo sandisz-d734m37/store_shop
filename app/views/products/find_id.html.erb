@@ -1,0 +1,12 @@
+<a href="/products">Products</a>
+<h2><%= @product.name %> Informtation:</h2>
+<h4>Name:</h4>
+<h1><strong><%= @product.name %></strong></h1>
+
+<p>Description: <strong><%= @product.description %></strong></p>
+<p>Price: <strong><%= @product.price %></strong></p>
+<p>Quantity: <strong><%= @product.quantity %></strong></p>
+<p>Sale: <strong><%= @product.sale_status %></strong></p><br/>
+<p>Available at: <strong><%= @product.available_at(@product.store_id) %></strong></p><br/>
+
+<%# <a href="/products/<%= @product.id %><%# /edit_info">Edit product information</a> %>
