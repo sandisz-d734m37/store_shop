@@ -2,5 +2,10 @@
 <h2><%= @store.name %> Informtation:</h2>
 <h4>Name:</h4>
 <h1><strong><%= @store.name %></strong></h1>
-<p><strong>Description:</strong><br><br><%= @store.description %></p>
+
+<p>Description: <strong><%= @store.description %></strong></p>
+<p>Address: <strong><%= @store.address %></strong></p>
+<p>Rating: <strong><%= @store.rating %></strong></p>
+<p>Sale: <strong><%= @store.sale_status %></strong></p><br/>
+
 <a href="/stores/<%= @store.id %>/edit_info">Edit store information</a>
