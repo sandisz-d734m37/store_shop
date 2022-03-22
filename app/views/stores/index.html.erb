@@ -1,8 +1,8 @@
 <h1>All of your very many stores</h1>
-<h4> as you've created and wanted to see (read) them</h4>
+<h4> as you've created and wanted to see (read) them</h4><br><br><br>
 <% @stores.each do |store| %>
-  <h2><%= store.name %></h2>
-  <p><%= store.description %></p>
+  <h2><a href="/stores/<%= store.id %>"><%= store.name %></a></h2>
+  <p><%= store.description %></p><br><br>
 <% end %>
 
-<h3><a href='/stores/new'>Make whole new store if you want to!</a></h3>
+<br><h3><a href='/stores/new'>Make whole new store if you want to!</a></h3>

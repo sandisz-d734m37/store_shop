@@ -1,0 +1,8 @@
+<form action="/stores/<%= @store.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <h3>Edit:</h3>
+  <input type='text' name='store[name]' value="<%= @store.name %>"/><br/>
+  <textarea name='store[description]'><%= @store.description %></textarea><br/>
+  <input type='submit'/>
+</form>
