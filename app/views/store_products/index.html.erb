@@ -1,3 +1,7 @@
 <% @products.each do |product| %>
-  <p><%= product.name %></p>
+  <h3><%= product.name %></h3>
+  <p><%= product.description %></p>
+  <p><%= product.price %></p>
+  <p><%= product.quantity %></p>
+  <p><%= product.sale_status %></p>
 <% end %>
