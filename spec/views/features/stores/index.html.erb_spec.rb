@@ -17,6 +17,7 @@ RSpec.describe "stores/index", type: :feature do
         rating: 5,
         sale: false
       )
+
   end
 
   it "displays all store names" do
@@ -25,4 +26,6 @@ RSpec.describe "stores/index", type: :feature do
       expect(page).to have_content(@store_1.name)
       expect(page).to have_content(@store_2.name)
   end
+
+
 end
