@@ -1,4 +1,6 @@
 class Store < ApplicationRecord
+  has_many :products
+
   def sale_status
     if sale == true
       return "Sale is on"
@@ -8,7 +10,8 @@ class Store < ApplicationRecord
   end
 
   def product_count
-    product = Product.where(store_id: id)
-    product.length
+    # product = Product.where(store_id: id)
+    # product.length
+    products.count
   end
 end

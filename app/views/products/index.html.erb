@@ -6,7 +6,7 @@
     <p>Price: <strong>$<%= product.price %></strong></p>
     <p>Total quantity (between all locations): <strong><%= product.quantity %> </strong></p>
     <p>On sale: <strong><%= product.sale_status %></strong></p>
-    <p>Available at: <strong><%= product.available_at(product.store_id) %></strong></p> 
+    <p>Available at: <strong><%= product.store.name %></strong></p> 
   <% end %>
 
 <br><h3><a href='/products/new'>Make a new product</a></h3>
