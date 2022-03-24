@@ -1,3 +1,7 @@
+<a href="/stores">Back to All Stores</a></br>
+<a href="/stores/<%= @store.id %>">Back to <%= @store.name %></a></br>
+<a href="/products">Back to All Products</a>
+
 <% @products.each do |product| %>
   <h3><%= product.name %></h3>
   <p><%= product.description %></p>
