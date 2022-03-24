@@ -50,8 +50,8 @@ RSpec.describe Product, type: :model do
       end
 
       it 'returns the store name according to the products store_id (foreign key)' do
-        expect(@product_1.available_at(@product_1.store_id)).to eq("first store")
-        expect(@product_2.available_at(@product_2.store_id)).to eq("second store")
+        expect(@product_1.store.name).to eq("first store")
+        expect(@product_2.store.name).to eq("second store")
       end
     end
   end
