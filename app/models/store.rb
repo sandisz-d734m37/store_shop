@@ -6,4 +6,9 @@ class Store < ApplicationRecord
       return "Sale is off"
     end
   end
+
+  def product_count
+    product = Product.where(store_id: id)
+    product.length
+  end
 end
