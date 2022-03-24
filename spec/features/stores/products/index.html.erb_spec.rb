@@ -36,11 +36,39 @@ RSpec.describe 'Stores products index' do
         on_sale: false
       )
   end
-  
+
   it 'shows all the product names for the store' do
     visit "/stores/#{@store_1.id}/products"
 
     expect(page).to have_content(@product_1.name)
     expect(page).not_to have_content(@product_2.name)
+  end
+
+  it 'shows all the product descriptions for the store' do
+    visit "/stores/#{@store_1.id}/products"
+
+    expect(page).to have_content(@product_1.description)
+    expect(page).not_to have_content(@product_2.description)
+  end
+
+  it 'shows all the product prices for the store' do
+    visit "/stores/#{@store_1.id}/products"
+
+    expect(page).to have_content(@product_1.price)
+    expect(page).not_to have_content(@product_2.price)
+  end
+
+  it 'shows all the product quantities for the store' do
+    visit "/stores/#{@store_1.id}/products"
+
+    expect(page).to have_content(@product_1.quantity)
+    expect(page).not_to have_content(@product_2.quantity)
+  end
+
+  it 'shows all the product sale statuses for the store' do
+    visit "/stores/#{@store_1.id}/products"
+
+    expect(page).to have_content(@product_1.sale_status)
+    expect(page).not_to have_content(@product_2.sale_status)
   end
 end
