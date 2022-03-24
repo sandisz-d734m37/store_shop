@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "products/index/find_id", type: :feature do
+RSpec.describe "products/index/show", type: :feature do
   before(:each) do
     @store_1 = Store.create!(
       name: "Store 1",
@@ -46,5 +46,11 @@ RSpec.describe "products/index/find_id", type: :feature do
     expect(page).to have_content(@store_1.name)
     expect(page).not_to have_content(@product_2.name)
     expect(page).not_to have_content(@store_2.name)
+  end
+
+  it 'displays a link to the product index' do
+    visit "/products/#{@product_1.id}"
+
+    expect(page).to have_link(href: "/products")
   end
 end

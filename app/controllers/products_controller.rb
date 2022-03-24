@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     redirect_to '/products'
   end
 
-  def find_id
+  def show
     @product = Product.find(params[:id])
   end
 end

@@ -21,7 +21,7 @@ class StoresController < ApplicationController
     # binding.pry
   end
 
-  def find_id
+  def show
     @store = Store.find(params[:id])
   end
 

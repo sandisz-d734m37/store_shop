@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   get '/stores', to: 'stores#index'
   get '/stores/new', to: 'stores#new'
   post '/stores', to: 'stores#create'
-  get '/stores/:id', to: 'stores#find_id'
+  get '/stores/:id', to: 'stores#show'
   get '/stores/:id/edit_info', to: 'stores#edit_info'
   patch '/stores/:id', to: 'stores#update'
 
   get '/products', to: 'products#index'
   get '/products/new', to: 'products#new'
   post '/products', to: 'products#create'
-  get '/products/:id', to: 'products#find_id'
+  get '/products/:id', to: 'products#show'
 end
