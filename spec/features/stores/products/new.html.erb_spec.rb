@@ -41,6 +41,8 @@ RSpec.describe "Store Product creation" do
     fill_in('Price', with: 5.03)
     fill_in('Quantity', with: 8)
 
+    click_button("Create Product")
+
     expect(current_path).to eq("/stores/#{@store_1.id}/products")
     expect(page).to have_content("Test Product")
   end

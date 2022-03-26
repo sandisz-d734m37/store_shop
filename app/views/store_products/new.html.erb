@@ -1,0 +1,18 @@
+<a href="/stores">Back to All Stores</a><br/>
+<a href="/products">Back to All Products</a><br/><br/>
+<!-- <a href="store/<%# <%= @store.id %>">Back to <%# <%= @store.name %> Products</a><br/> -->
+
+<%= form_with url: "/stores/#{@store.id}/products", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %><br/><br/>
+  <%= form.label :description %>
+  <%= form.text_field :description %><br/><br/>
+  <%= form.label :price %>
+  <%= form.text_field :price %><br/><br/>
+  <%= form.label :quantity %>
+  <%= form.text_field :quantity %><br/><br/>
+  <%= form.hidden_field :on_sale, value: false %>
+
+
+  <%= form.submit "Create Product" %>
+<% end %>
