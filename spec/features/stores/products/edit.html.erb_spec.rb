@@ -50,4 +50,21 @@ RSpec.describe "Store Product edit" do
     expect(page).to have_field("Price", with: "#{@product_1.price}")
     expect(page).to have_field("Quantity", with: "#{@product_1.quantity}")
   end
+
+  it 'updates information' do
+    visit "stores/#{@store_1.id}/products/#{@product_1.id}/edit"
+
+    fill_in('Name', with: 'Super Product')
+    fill_in('Description', with: 'A Super Duper Product')
+    fill_in('Quantity', with: 5)
+
+    click_button "Update"
+
+    expect(current_path).to eq("/stores/#{@store_1.id}/products/#{@product_1.id}")
+    expect(page).to have_content("Super Product")
+    expect(page).not_to have_content("product 1")
+    expect(page).to have_content("Description: A Super Duper Product")
+    expect(page).not_to have_content("first product")
+  end
 end
+# When I click the button to submit the form "Update Child"
