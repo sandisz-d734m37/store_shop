@@ -83,4 +83,12 @@ RSpec.describe 'Stores products index' do
 
     expect(page).to have_link(href: "/stores")
   end
+
+  it 'has a link to add a new product to the store' do
+    visit "/stores/#{@store_1.id}/products"
+
+    click_button("Create product")
+
+    expect(current_path).to eq("/stores/#{@store_1.id}/products/new")
+  end
 end
