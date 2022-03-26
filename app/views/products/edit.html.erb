@@ -1,0 +1,12 @@
+<%= form_with url: "/products/#{@product.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, value: @product.name %>
+  <%= form.label :description %>
+  <%= form.text_field :description, value: @product.description %>
+  <%= form.label :price %>
+  <%= form.text_field :price, value: @product.price %>
+  <%= form.label :quantity %>
+  <%= form.text_field :quantity, value: @product.quantity %>
+
+  <%= form.submit "Update" %>
+<% end %>

@@ -45,7 +45,7 @@ RSpec.describe 'Product edit' do
     # the child's data is updated,
     # and I am redirected to the Child Show page where I see the Child's updated information
     visit "/products/#{@product_1.id}/edit"
-
+save_and_open_page
     expect(page).to have_field("Name", with: "#{@product_1.name}")
     expect(page).to have_field("Description", with: "#{@product_1.description}")
     expect(page).to have_field("Price", with: "#{@product_1.price}")
