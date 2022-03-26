@@ -1,16 +1,16 @@
 <a href="/stores">Back to All Stores</a><br/>
 <a href="/products">Back to All Products</a>
 
-<form action="/stores" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="store[sale]" value="false">
-  <input type="hidden" name="store[rating]" value="5">
-  <h2>What's is your new store?</h2>
-  <p>(in terms of name)</p>
-  <input type='text' name='store[name]'/><br>
-  <p>describe it to me</p>
-  <textarea name="store[description]"></textarea><br>
-  <p>what's the address?</p>
-  <textarea name="store[address]"></textarea><br>
-  <input type='submit'/>
-</form>
+<%= form_with url: '/stores', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %><br/><br/>
+  <%= form.label :description %>
+  <%= form.text_field :description %><br/><br/>
+  <%= form.label :address %>
+  <%= form.text_field :address %><br/><br/>
+  <%= form.hidden_field :sale, value: false %>
+  <%= form.hidden_field :rating, value: 5 %>
+
+
+  <%= form.submit "Create Store" %>
+<% end %>
