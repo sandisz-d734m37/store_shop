@@ -34,18 +34,18 @@ RSpec.describe "stores/index", type: :feature do
     expect(page).to have_content(@store_1.created_at.to_s)
     expect(page).to have_content(@store_2.created_at.to_s)
     expect(page.text).to include(
-      "Store 2\n
-      Created: #{@store_2.created_at.to_s}\n
-      This stores products\n
-      Store 1\n
-      Created: #{@store_1.created_at.to_s}"
+      "Store 2
+Created: #{@store_2.created_at.to_s}
+This stores products
+Store 1
+Created: #{@store_1.created_at.to_s}"
     )
     expect(page.text).not_to include(
-      "Store 1\n
-      Created: #{@store_1.created_at.to_s}\n
-      This stores products\n
-      Store 2\n
-      Created: #{@store_2.created_at.to_s}"
+      "Store 1
+Created: #{@store_1.created_at.to_s}
+This stores products
+Store 2
+Created: #{@store_2.created_at.to_s}"
     )
   end
 
