@@ -97,6 +97,6 @@ RSpec.describe 'Stores products index' do
     # save_and_open_page
     click_link "product 1"
 
-    expect(current_path).to be("/stores/#{@store_1.id}/products/#{@product_1.id}")
+    expect(current_path).to eq("/stores/#{@store_1.id}/products/#{@product_1.id}")
   end
 end

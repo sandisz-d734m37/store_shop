@@ -24,4 +24,10 @@ class StoreProductsController < ApplicationController
 
     redirect_to "/stores/#{@store.id}/products"
   end
+
+  def show
+    # binding.pry
+    @store = Store.find(params[:store_id])
+    @product = Product.find(params[:product_id])
+  end
 end

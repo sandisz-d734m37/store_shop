@@ -5,7 +5,7 @@
 <h1> <%= @store.name %>'s products</h1><hr/>
 
 <% @products.each do |product| %>
-  <h3><%= product.name %></h3>
+  <h3><a href="/stores/<%= @store.id %>/products/<%= product.id %>"<%= product.name %></h3>
   <p><%= product.description %></p>
   <p><%= product.price %></p>
   <p><%= product.quantity %></p>
