@@ -54,9 +54,6 @@ RSpec.describe 'Store show page', type: :feature do
   end
 
   it "displays the store's product count" do
-    # As a visitor
-    # When I visit a parent's show page
-    # I see a count of the number of children associated with this parent
     visit "stores/#{@store_2.id}"
 
     expect(page).to have_content("Total products: #{@store_2.product_count}")
@@ -72,5 +69,11 @@ RSpec.describe 'Store show page', type: :feature do
     visit "/stores/#{@store_1.id}"
 
     expect(page).to have_link(href: "/stores")
+  end
+
+  it 'displays a link to the stores product index' do
+    visit "/stores/#{@store_1.id}"
+
+    expect(page).to have_link(href: "#{@store_1.id}/products")
   end
 end
