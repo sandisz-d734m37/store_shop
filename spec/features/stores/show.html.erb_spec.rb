@@ -61,4 +61,16 @@ RSpec.describe 'Store show page', type: :feature do
 
     expect(page).to have_content("Total products: #{@store_2.product_count}")
   end
+
+  it 'displays a link to the product index' do
+    visit "/stores/#{@store_1.id}"
+
+    expect(page).to have_link(href: "/products")
+  end
+
+  it 'displays a link to the stores index' do
+    visit "/stores/#{@store_1.id}"
+
+    expect(page).to have_link(href: "/stores")
+  end
 end

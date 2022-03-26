@@ -71,4 +71,16 @@ RSpec.describe 'Stores products index' do
     expect(page).to have_content(@product_1.sale_status)
     expect(page).not_to have_content(@product_2.sale_status)
   end
+
+  it 'displays a link to the product index' do
+    visit "/stores/#{@store_1.id}/products"
+
+    expect(page).to have_link(href: "/products")
+  end
+
+  it 'has link to the Stores index' do
+    visit "/stores/#{@store_1.id}/products"
+
+    expect(page).to have_link(href: "/stores")
+  end
 end

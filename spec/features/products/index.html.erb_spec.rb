@@ -52,4 +52,10 @@ RSpec.describe "products/index", type: :feature do
     expect(page).to have_content(@product_2.sale_status)
     expect(page).to have_content(@store_2.name)
   end
+
+  it 'has link to the Stores index' do
+    visit "/products"
+
+    expect(page).to have_link(href: "/stores")
+  end
 end

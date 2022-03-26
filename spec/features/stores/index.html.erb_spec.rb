@@ -49,5 +49,9 @@ RSpec.describe "stores/index", type: :feature do
     )
   end
 
+  it 'displays a link to the product index' do
+    visit "/stores"
 
+    expect(page).to have_link(href: "/products")
+  end
 end

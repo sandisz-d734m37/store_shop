@@ -53,4 +53,10 @@ RSpec.describe "products/index/show", type: :feature do
 
     expect(page).to have_link(href: "/products")
   end
+
+  it 'has link to the Stores index' do
+    visit "/products/#{@product_1.id}"
+
+    expect(page).to have_link(href: "/stores")
+  end
 end
