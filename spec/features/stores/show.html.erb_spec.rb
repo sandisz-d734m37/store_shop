@@ -76,4 +76,10 @@ RSpec.describe 'Store show page', type: :feature do
 
     expect(page).to have_link(href: "#{@store_1.id}/products")
   end
+
+  it 'has a link to update the stores info' do
+    visit "/stores/#{@store_1.id}"
+
+    expect(page).to have_link(href: "/stores/#{@store_1.id}/edit")
+  end
 end
