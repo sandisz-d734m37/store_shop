@@ -43,7 +43,6 @@ RSpec.describe "Store Product edit" do
   end
 
   it 'has a form to edit product attributes' do
-    # I am taken to '/child_table_name/:id/edit' where I see a form to edit the child's attributes:
     visit "stores/#{@store_1.id}/products/#{@product_1.id}/edit"
 
     expect(page).to have_field("Name", with: "#{@product_1.name}")
