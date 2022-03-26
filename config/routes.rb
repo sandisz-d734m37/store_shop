@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   get '/stores/:store_id/products/new', to: 'store_products#new'
   post '/stores/:store_id/products', to: 'store_products#create'
   get '/stores/:store_id/products/:product_id', to: 'store_products#show'
+  get '/stores/:store_id/products/:product_id/edit', to: 'store_products#edit'
 
 end

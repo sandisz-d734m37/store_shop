@@ -12,4 +12,4 @@
 <p>Sale: <strong><%= @product.sale_status %></strong></p><br/>
 <p>Available at: <strong><%= @product.store.name %></strong></p><br/>
 
-<%# <a href="/products/<%= @product.id %><%# /edit_info">Edit product information</a> %>
+<%= button_to "Update Product", "#{@product.id}/edit", method: :get %>

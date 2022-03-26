@@ -26,6 +26,11 @@ class StoreProductsController < ApplicationController
   end
 
   def show
+    @store = Store.find(params[:store_id])
+    @product = Product.find(params[:product_id])
+  end
+
+  def edit
     # binding.pry
     @store = Store.find(params[:store_id])
     @product = Product.find(params[:product_id])
