@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   post '/stores/:store_id/products', to: 'store_products#create'
   get '/stores/:store_id/products/:product_id', to: 'store_products#show'
   get '/stores/:store_id/products/:product_id/edit', to: 'store_products#edit'
+  patch '/stores/:store_id/products/:product_id', to: 'store_products#update'
 
 end

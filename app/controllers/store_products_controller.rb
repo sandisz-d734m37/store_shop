@@ -35,4 +35,18 @@ class StoreProductsController < ApplicationController
     @store = Store.find(params[:store_id])
     @product = Product.find(params[:product_id])
   end
+
+  def update
+    store = Store.find(params[:store_id])
+    product = Product.find(params[:product_id])
+    # binding.pry
+    product.update({
+      name: params[:name],
+      description: params[:description],
+      price: params[:price],
+      quantity: params[:quantity]
+      })
+      product.save
+      redirect_to "/stores/#{store.id}/products/#{product.id}"
+  end
 end
