@@ -55,11 +55,11 @@ Created: #{@store_2.created_at.to_s}"
     expect(page).to have_link(href: "/products")
   end
 
-  it 'has a link to the create a new parent' do
+  it 'has a link to the create a new store' do
     visit "/stores"
 
     click_link "New Store"
-    
+
     expect(current_path).to eq("/stores/new")
   end
 end
