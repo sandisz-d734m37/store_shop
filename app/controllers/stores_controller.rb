@@ -31,10 +31,10 @@ class StoresController < ApplicationController
   def update
     store = Store.find(params[:id])
     store.update({
-      name: params[:store][:name],
-      description: params[:store][:description],
-      address: params[:store][:address],
-      rating: params[:store][:rating]
+      name: params[:name],
+      description: params[:description],
+      address: params[:address],
+      rating: params[:rating]
       })
     store.save
     redirect_to "/stores/#{store.id}"
