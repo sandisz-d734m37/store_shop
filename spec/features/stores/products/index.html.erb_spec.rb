@@ -87,7 +87,7 @@ RSpec.describe 'Stores products index' do
   it 'has a link to add a new product to the store' do
     visit "/stores/#{@store_1.id}/products"
 
-    click_button("Create product")
+    click_button("Add product to #{@store_1.name}")
 
     expect(current_path).to eq("/stores/#{@store_1.id}/products/new")
   end

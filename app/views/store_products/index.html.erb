@@ -12,3 +12,5 @@
   <p><%= product.sale_status %></p>
   <hr/>
 <% end %>
+
+<%= button_to "Add product to #{@store.name}", "/stores/#{@store.id}/products/new", method: :get %>

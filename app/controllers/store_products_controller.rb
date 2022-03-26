@@ -3,4 +3,7 @@ class StoreProductsController < ApplicationController
     @store = Store.find(params[:store_id])
     @products = @store.products
   end
+
+  def new
+  end
 end

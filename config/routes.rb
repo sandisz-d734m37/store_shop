@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get '/products/:id', to: 'products#show'
 
   get '/stores/:store_id/products', to: 'store_products#index'
+  get '/stores/:store_id/products/new', to: 'store_products#new'
+
 end
