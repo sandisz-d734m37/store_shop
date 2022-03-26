@@ -46,7 +46,7 @@ class StoreProductsController < ApplicationController
       price: params[:price],
       quantity: params[:quantity]
       })
-      product.save
-      redirect_to "/stores/#{store.id}/products/#{product.id}"
+    product.save
+    redirect_to "/stores/#{store.id}/products/#{product.id}"
   end
 end
