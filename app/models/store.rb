@@ -14,4 +14,8 @@ class Store < ApplicationRecord
     # product.length
     products.count
   end
+
+    def self.first_to_last
+      order(created_at: :desc)
+    end
 end

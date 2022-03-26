@@ -1,11 +1,12 @@
 <a href="/products">All Products</a>
 
 <h1>All of your very many stores</h1>
-<h4> as you've created and wanted to see (read) them</h4><br><br><br>
+<h4> as you've created and wanted to see (read) them</h4><br><br><hr>
 <% @stores.each do |store| %>
   <h2><a href="/stores/<%= store.id %>"><%= store.name %></a></h2>
   <p>Created: <%= store.created_at.to_s %><p>
   <p><a href="stores/<%= store.id %>/products">This stores products</a></p>
+  <hr/>
 <% end %>
 
 <br><h3><a href='/stores/new'>Make whole new store if you want to!</a></h3>
