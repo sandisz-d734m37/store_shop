@@ -40,4 +40,12 @@ RSpec.describe "Store Product show page" do
     expect(page).to have_content(@product_1.price)
     expect(page).not_to have_content(@product_2.name)
   end
+  it 'has links to go back to index pages and the unique stores products' do
+    visit "/stores/#{@store_1.id}/products/#{@product_1.id}"
+
+    expect(page).to have_link(href: "/stores")
+    expect(page).to have_link(href: "/products")
+    expect(page).to have_link(href: "/stores/#{@store_1.id}/products")
+    expect(page).not_to have_link(href: "/stores/#{@store_2.id}/products")
+  end
 end
