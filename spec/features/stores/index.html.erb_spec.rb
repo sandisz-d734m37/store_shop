@@ -9,7 +9,7 @@ RSpec.describe "stores/index", type: :feature do
         rating: 1,
         sale: false
       )
-
+      sleep(1)
       @store_2 = Store.create!(
         name: "Store 2",
         description: "The store two",
@@ -33,8 +33,20 @@ RSpec.describe "stores/index", type: :feature do
 
     expect(page).to have_content(@store_1.created_at.to_s)
     expect(page).to have_content(@store_2.created_at.to_s)
-    expect(page.text).to include("Store 1\nCreated: #{@store_1.created_at.to_s}\nStore 2\nCreated: #{@store_2.created_at.to_s}")
-    expect(page.text).not_to include("Store 2\nCreated: #{@store_2.created_at.to_s}\nStore 1\nCreated: #{@store_1.created_at.to_s}")
+    expect(page.text).to include(
+      "Store 2\n
+      Created: #{@store_2.created_at.to_s}\n
+      This stores products\n
+      Store 1\n
+      Created: #{@store_1.created_at.to_s}"
+    )
+    expect(page.text).not_to include(
+      "Store 1\n
+      Created: #{@store_1.created_at.to_s}\n
+      This stores products\n
+      Store 2\n
+      Created: #{@store_2.created_at.to_s}"
+    )
   end
 
 
