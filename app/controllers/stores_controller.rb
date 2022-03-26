@@ -24,7 +24,7 @@ class StoresController < ApplicationController
     @store = Store.find(params[:id])
   end
 
-  def edit_info
+  def edit
     @store = Store.find(params[:id])
   end
 
