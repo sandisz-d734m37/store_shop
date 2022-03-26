@@ -32,6 +32,7 @@ RSpec.describe "Store Product show page" do
         on_sale: false
       )
   end
+
   it 'has all products information' do
     visit "/stores/#{@store_1.id}/products/#{@product_1.id}"
 
@@ -40,6 +41,7 @@ RSpec.describe "Store Product show page" do
     expect(page).to have_content(@product_1.price)
     expect(page).not_to have_content(@product_2.name)
   end
+
   it 'has links to go back to index pages and the unique stores products' do
     visit "/stores/#{@store_1.id}/products/#{@product_1.id}"
 
@@ -48,4 +50,17 @@ RSpec.describe "Store Product show page" do
     expect(page).to have_link(href: "/stores/#{@store_1.id}/products")
     expect(page).not_to have_link(href: "/stores/#{@store_2.id}/products")
   end
+
+  it 'has a button to update the product info' do
+    # As a visitor
+    # When I visit a Child Show page
+    # Then I see a link to update that Child "Update Child"
+    visit "/stores/#{@store_1.id}/products/#{@product_1.id}"
+
+    expect(page).to have_button("Update Product")
+
+    click_button("Update Product")
+    expect(current_path).to eq("/stores/#{@store_1.id}/products/#{@product_1.id}/edit")
+  end
+
 end
