@@ -1,0 +1,15 @@
+<a href="/stores">Stores</a>
+<a href="/products">Back to All Products</a>
+
+<h2><%= @store.name %> Informtation:</h2>
+<h4>Name:</h4>
+<h1><strong><%= @store.name %></strong></h1>
+
+<p>Description: <strong><%= @store.description %></strong></p>
+<p>Address: <strong><%= @store.address %></strong></p>
+<p>Rating: <strong><%= @store.rating %></strong></p>
+<p>Sale: <strong><%= @store.sale_status %></strong></p><br/>
+<p>Total products: <strong><%= @store.product_count %></strong></p>
+<p><a href="<%= @store.id %>/products">This stores products</a></p><br/>
+
+<a href="/stores/<%= @store.id %>/edit_info">Edit store information</a>

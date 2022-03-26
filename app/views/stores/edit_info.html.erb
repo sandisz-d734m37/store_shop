@@ -1,0 +1,14 @@
+<a href="/stores">Back to All Stores</a><br/>
+<a href="/products">Back to All Products</a>
+
+<form action="/stores/<%= @store.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <h3>Edit:</h3>
+  <input type='text' name='store[name]' value="<%= @store.name %>"/><br/>
+  <textarea name='store[description]'><%= @store.description %></textarea><br/>
+  <textarea name='store[address]'><%= @store.address %></textarea><br/>
+  <p>Rating:</p>
+  <input type='text' name="store[rating]" value="<%= @store.rating %>">
+  <input type='submit'/>
+</form>
