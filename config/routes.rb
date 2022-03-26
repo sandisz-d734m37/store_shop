@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get '/products/new', to: 'products#new'
   post '/products', to: 'products#create'
   get '/products/:id', to: 'products#show'
+
+  get '/stores/:store_id/products', to: 'store_products#index'
 end
