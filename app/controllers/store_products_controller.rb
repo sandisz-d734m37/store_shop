@@ -49,4 +49,10 @@ class StoreProductsController < ApplicationController
     product.save
     redirect_to "/stores/#{store.id}/products/#{product.id}"
   end
+
+  def destroy
+    @store = Store.find(params[:store_id])
+    Product.destroy(params[:product_id])
+    redirect_to "/stores/#{@store.id}/products"
+  end
 end
