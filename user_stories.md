@@ -207,7 +207,7 @@ Then a 'DELETE' request is sent to '/child_table_name/:id',
 the child is deleted,
 and I am redirected to the child index page where I no longer see this child
 
-[ ] done
+[`X`] done
 _______________________________________________________________________________
 User Story 21, Display Records Over a Given Threshold
 

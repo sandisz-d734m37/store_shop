@@ -12,6 +12,11 @@
       <p>Available at: <strong><%= product.store.name %></strong></p>
       <br/><br/>
       <%= button_to "Update #{product.name}", "products/#{product.id}/edit", method: :get %>
+      <br/>
+      <%= form_with url: "/products/#{product.id}", method: :delete, local: true do |form| %>
+        <%= form.submit "Delete #{product.name}" %>
+      <% end %>
       <hr/>
+
     <% end %>
   <% end %>
