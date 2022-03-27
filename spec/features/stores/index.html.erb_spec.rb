@@ -63,7 +63,7 @@ Created: #{@store_2.created_at.to_s}"
     expect(current_path).to eq("/stores/new")
   end
 
-  it 'has a links to update each stores info' do
+  it 'has links to update each stores info' do
     visit "/stores"
 
     expect(page).to have_button("Update #{@store_1.name}")
@@ -72,5 +72,33 @@ Created: #{@store_2.created_at.to_s}"
     click_button("Update #{@store_2.name}")
 
     expect(current_path).to eq("/stores/#{@store_2.id}/edit")
+  end
+
+  it 'has buttons to delete individual stores' do
+    store_3 = Store.create!(
+      name: "Sucky Store",
+      description: "This store is bad and on the way out",
+      address: "Noone even cares smfh",
+      rating: 1,
+      sale: true
+    )
+
+    product_4 = store_3.products.create!(
+      name: 'product four',
+      description: 'The only product at Sucky Store',
+      price: 13000.00,
+      quantity: 19,
+      available_online: false,
+    )
+
+    visit "/stores"
+    click_button("Delete Sucky Store")
+
+    expect(current_path).to eq("/stores")
+    expect(page).not_to have_content(store_3.name)
+    expect(page).to have_content(@store_2.name)
+
+    click_link("All Products")
+    expect(page).not_to have_content(product_4.name)
   end
 end
