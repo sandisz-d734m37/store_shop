@@ -100,6 +100,18 @@ RSpec.describe 'Stores products index' do
     expect(current_path).to eq("/stores/#{@store_1.id}/products/#{@product_1.id}")
   end
 
+  it 'has a button to update each product' do
+    visit "/stores/#{@store_1.id}/products"
+    save_and_open_page
+    expect(page).to have_button("Update #{@product_1.name}")
+
+    click_button("Update #{@product_1.name}")
+
+    expect(current_path).to eq("/stores/#{@store_1.id}/products/#{@product_1.id}/edit")
+    expect(page).to have_field("Name", with: "#{@product_1.name}")
+    expect(page).to have_field("Description", with: "#{@product_1.description}")
+  end
+
   it 'has a buttons to delete products' do
     visit "/stores/#{@store_1.id}/products"
 
