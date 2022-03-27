@@ -69,13 +69,6 @@ RSpec.describe "products/index/show", type: :feature do
   end
 
   it 'has a button to delete itself' do
-    # As a visitor
-    # When I visit a child show page
-    # Then I see a link to delete the child "Delete Child"
-    # When I click the link
-    # Then a 'DELETE' request is sent to '/child_table_name/:id',
-    # the child is deleted,
-    # and I am redirected to the child index page where I no longer see this child
     deletable_product = @store_1.products.create(
       name: "deleteable",
       description: "deleteable product",

@@ -85,4 +85,19 @@ RSpec.describe "products/index", type: :feature do
 
     expect(current_path).to eq("/products/#{@product_2.id}/edit")
   end
+
+  it 'has a buttons to delete products' do
+    visit "/products"
+
+    expect(page).to have_button("Delete #{@product_1.name}")
+    expect(page).to have_button("Delete #{@product_2.name}")
+
+    click_button("Delete #{@product_2.name}")
+
+    expect(current_path).to eq("/products")
+    expect(page).not_to have_content(@product_2.name)
+    expect(page).not_to have_content(@product_2.description)
+    expect(page).to have_content(@product_1.name)
+    expect(page).to have_content(@product_1.description)
+  end
 end

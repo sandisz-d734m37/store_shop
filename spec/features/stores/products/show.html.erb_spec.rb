@@ -52,9 +52,6 @@ RSpec.describe "Store Product show page" do
   end
 
   it 'has a button to update the product info' do
-    # As a visitor
-    # When I visit a Child Show page
-    # Then I see a link to update that Child "Update Child"
     visit "/stores/#{@store_1.id}/products/#{@product_1.id}"
 
     expect(page).to have_button("Update Product")
@@ -64,13 +61,6 @@ RSpec.describe "Store Product show page" do
   end
 
   it 'has a button to delete itself' do
-    # As a visitor
-    # When I visit a child show page
-    # Then I see a link to delete the child "Delete Child"
-    # When I click the link
-    # Then a 'DELETE' request is sent to '/child_table_name/:id',
-    # the child is deleted,
-    # and I am redirected to the child index page where I no longer see this child
     deletable_product = @store_1.products.create(
       name: "deleteable",
       description: "deleteable product",
