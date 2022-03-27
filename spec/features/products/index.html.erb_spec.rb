@@ -30,7 +30,7 @@ RSpec.describe "products/index", type: :feature do
       description: "second product",
       price: 35.04,
       quantity: 80010,
-      available_online: false,
+      available_online: true,
       store_id: @store_2.id
     )
   end
@@ -57,5 +57,21 @@ RSpec.describe "products/index", type: :feature do
     visit "/products"
 
     expect(page).to have_link(href: "/stores")
+  end
+
+  it 'does not display producs unavaulable online' do
+    product_3 = @store_1.products.create!(
+      name: "product 3",
+      description: "another product that you cannot see",
+      price: 38.04,
+      quantity: 434,
+      available_online: false
+    )
+
+    visit "/products"
+
+    expect(page).to have_content(@product_1.name)
+    expect(page).to have_content(@product_2.name)
+    expect(page).not_to have_content(product_3.name)
   end
 end
