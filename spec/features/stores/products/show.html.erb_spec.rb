@@ -63,4 +63,32 @@ RSpec.describe "Store Product show page" do
     expect(current_path).to eq("/stores/#{@store_1.id}/products/#{@product_1.id}/edit")
   end
 
+  it 'has a button to delete itself' do
+    # As a visitor
+    # When I visit a child show page
+    # Then I see a link to delete the child "Delete Child"
+    # When I click the link
+    # Then a 'DELETE' request is sent to '/child_table_name/:id',
+    # the child is deleted,
+    # and I am redirected to the child index page where I no longer see this child
+    deletable_product = @store_1.products.create(
+      name: "deleteable",
+      description: "deleteable product",
+      price: 300.04,
+      quantity: 810,
+      available_online: true,
+    )
+
+    visit "/stores/#{@store_1.id}/products/#{deletable_product.id}"
+
+    expect(page).to have_content("deleteable")
+    expect(page).to have_content("Description: #{deletable_product.description}")
+    expect(page).to have_button("Delete deleteable")
+
+    click_button("Delete deleteable")
+
+    expect(current_path).to eq("/stores/#{@store_1.id}/products")
+    expect(page).not_to have_content("deleteable")
+    expect(page).not_to have_content("Description: deleteable product")
+  end
 end
