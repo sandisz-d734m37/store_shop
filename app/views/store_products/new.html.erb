@@ -8,10 +8,11 @@
   <%= form.label :description %>
   <%= form.text_field :description %><br/><br/>
   <%= form.label :price %>
-  <%= form.text_field :price %><br/><br/>
+  <%= form.number_field :price, step: 0.01 %><br/><br/>
   <%= form.label :quantity %>
-  <%= form.text_field :quantity %><br/><br/>
-  <%= form.hidden_field :available_online, value: true %>
+  <%= form.number_field :quantity %><br/><br/>
+  <%= form.label :available_online %>
+  <%= form.check_box :available_online, checked: true %><br/><br/>
 
 
   <%= form.submit "Create Product" %>

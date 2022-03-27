@@ -9,8 +9,9 @@
   <%= form.label :address %>
   <%= form.text_field :address, value: @store.address %><br/><br/>
   <%= form.label :rating %>
-  <%= form.text_field :rating, value: 5 %>
-  <%= form.hidden_field :sale, value: false %>
+  <%= form.text_field :rating, value: 5 %><br/><br/><br/><br/>
+  <%= form.label :sale %>
+  <%= form.check_box :sale, checked: @store.sale %><br/><br/>
 
 
   <%= form.submit "Update" %>

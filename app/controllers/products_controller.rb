@@ -3,24 +3,6 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def new
-  end
-
-  def create
-    product = Product.new({
-      name: params[:product][:name],
-      description: params[:product][:description],
-      price: params[:product][:price],
-      quantity: params[:product][:quantity],
-      available_online: params[:product][:available_online],
-      store_id: params[:product][:store_id]
-      })
-
-    product.save
-
-    redirect_to '/products'
-  end
-
   def show
     @product = Product.find(params[:id])
   end
@@ -36,7 +18,8 @@ class ProductsController < ApplicationController
       name: params[:name],
       description: params[:description],
       price: params[:price],
-      quantity: params[:quantity]
+      quantity: params[:quantity],
+      available_online: params[:available_online]
       })
     product.save
     redirect_to "/products/#{product.id}"

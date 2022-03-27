@@ -34,7 +34,8 @@ class StoresController < ApplicationController
       name: params[:name],
       description: params[:description],
       address: params[:address],
-      rating: params[:rating]
+      rating: params[:rating],
+      sale: params[:sale]
       })
     store.save
     redirect_to "/stores/#{store.id}"

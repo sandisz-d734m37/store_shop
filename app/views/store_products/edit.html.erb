@@ -7,6 +7,8 @@
   <%= form.text_field :price, value: @product.price %>
   <%= form.label :quantity %>
   <%= form.text_field :quantity, value: @product.quantity %>
-  
+  <%= form.label :available_online %>
+  <%= form.check_box :available_online, checked: @product.available_online %><br/><br/>
+
   <%= form.submit "Update" %>
 <% end %>

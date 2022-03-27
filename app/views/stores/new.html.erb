@@ -8,8 +8,10 @@
   <%= form.text_field :description %><br/><br/>
   <%= form.label :address %>
   <%= form.text_field :address %><br/><br/>
-  <%= form.hidden_field :sale, value: false %>
-  <%= form.hidden_field :rating, value: 5 %>
+  <%= form.label :sale %>
+  <%= form.check_box :sale %><br/><br/>
+  <%= form.label :rating %>
+  <%= form.number_field :rating, in: 1..5 %><br/><br/>
 
 
   <%= form.submit "Create Store" %>
