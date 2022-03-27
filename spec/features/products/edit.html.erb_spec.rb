@@ -50,6 +50,7 @@ RSpec.describe 'Product edit' do
     expect(page).to have_field("Description", with: "#{@product_1.description}")
     expect(page).to have_field("Price", with: "#{@product_1.price}")
     expect(page).to have_field("Quantity", with: "#{@product_1.quantity}")
+    expect(page).to have_field("Quantity", with: "#{@product_1.quantity}")
   end
 
   it 'updates information and redirects to product show page' do
@@ -66,5 +67,17 @@ RSpec.describe 'Product edit' do
     expect(page).not_to have_content("product 1")
     expect(page).to have_content("Description: A Super Mega Product")
     expect(page).not_to have_content("first product")
+  end
+
+  it 'has a checkbox to make the product available/unavailable online' do
+    visit "products/#{@product_1.id}/edit"
+
+    expect(page).to have_field('available_online', checked: true)
+  end
+
+  it 'has an unchecked checkbox if the product is already unavailable' do
+    visit "products/#{@product_2.id}/edit"
+
+    expect(page).to have_field('available_online', checked: false)
   end
 end
