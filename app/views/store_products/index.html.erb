@@ -10,6 +10,10 @@
   <p><%= product.price %></p>
   <p><%= product.quantity %></p>
   <p><%= product.available_online? %></p>
+  <br/><br/>
+  <%= form_with url: "/stores/#{@store.id}/products/#{product.id}", method: :delete, local: true do |form| %>
+    <%= form.submit "Delete #{product.name}" %>
+  <% end %>
   <hr/>
 <% end %>
 
