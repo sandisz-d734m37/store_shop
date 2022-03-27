@@ -47,4 +47,10 @@ RSpec.describe "Store Product creation" do
     expect(page).to have_content("Test Product")
   end
 
+  it 'has a checkbox to decide availability' do
+    visit "/stores/#{@store_1.id}/products/new"
+
+    expect(page).to have_field('available_online', checked: true)
+  end
+
 end
