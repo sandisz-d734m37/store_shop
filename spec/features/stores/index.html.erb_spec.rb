@@ -62,4 +62,11 @@ Created: #{@store_2.created_at.to_s}"
 
     expect(current_path).to eq("/stores/new")
   end
+
+  it 'has a links to update each stores info' do
+    visit "/stores"
+
+    expect(page).to have_link(href: "/stores/#{@store_1.id}/edit")
+    expect(page).to have_link(href: "/stores/#{@store_2.id}/edit")
+  end
 end
