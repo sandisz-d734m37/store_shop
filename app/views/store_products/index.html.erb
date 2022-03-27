@@ -11,6 +11,8 @@
   <p><%= product.quantity %></p>
   <p><%= product.available_online? %></p>
   <br/><br/>
+  <%= button_to "Update #{product.name}", "/stores/#{@store.id}/products/#{product.id}/edit", method: :get %>
+  <br/><br/>
   <%= form_with url: "/stores/#{@store.id}/products/#{product.id}", method: :delete, local: true do |form| %>
     <%= form.submit "Delete #{product.name}" %>
   <% end %>

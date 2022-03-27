@@ -237,7 +237,7 @@ Next to every child, I see a link to delete that child
 When I click the link
 I should be taken to the `child_table_name` index page where I no longer see that child
 
-[ ] done
+[`X`] done
 _______________________________________________________________________________
 ITERATION 4
 _______________________________________________________________________________
