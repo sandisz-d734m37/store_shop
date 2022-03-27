@@ -66,5 +66,16 @@ RSpec.describe "Store Product edit" do
     expect(page).to have_content("Description: A Super Duper Product")
     expect(page).not_to have_content("first product")
   end
+
+  it 'has a checkbox to make the product available/unavailable online' do
+    visit "stores/#{@store_1.id}/products/#{@product_1.id}/edit"
+
+    expect(page).to have_field('available_online', checked: true)
+  end
+
+  it 'has an unchecked checkbox if the product is already unavailable' do
+    visit "stores/#{@store_2.id}/products/#{@product_2.id}/edit"
+
+    expect(page).to have_field('available_online', checked: false)
+  end
 end
-# When I click the button to submit the form "Update Child"
