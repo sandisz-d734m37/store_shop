@@ -21,7 +21,9 @@ class ProductsController < ApplicationController
       quantity: params[:quantity],
       available_online: params[:available_online]
       })
+
     product.save
+    
     redirect_to "/products/#{product.id}"
   end
 

@@ -102,7 +102,7 @@ RSpec.describe 'Stores products index' do
 
   it 'has a button to update each product' do
     visit "/stores/#{@store_1.id}/products"
-    save_and_open_page
+
     expect(page).to have_button("Update #{@product_1.name}")
 
     click_button("Update #{@product_1.name}")

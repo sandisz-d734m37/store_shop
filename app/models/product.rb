@@ -9,11 +9,4 @@ class Product < ApplicationRecord
       "Unvailable Online"
     end
   end
-
-  # def available_at(store_id)
-  #   @store = Store.find(store_id)
-  #
-  #   @store.name
-  # end
-
 end
