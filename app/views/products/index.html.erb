@@ -10,6 +10,8 @@
       <p>Total quantity (between all locations): <strong><%= product.quantity %> </strong></p>
       <p>Availability: <strong><%= product.available_online? %></strong></p>
       <p>Available at: <strong><%= product.store.name %></strong></p>
+      <br/><br/>
+      <%= button_to "Update #{product.name}", "products/#{product.id}/edit", method: :get %>
       <hr/>
     <% end %>
   <% end %>

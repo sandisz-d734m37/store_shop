@@ -75,7 +75,7 @@ RSpec.describe "products/index", type: :feature do
     expect(page).not_to have_content(product_3.name)
   end
 
-  it 'has a links to update each stores info' do
+  it 'has links to update each products info' do
     visit "/products"
 
     expect(page).to have_button("Update #{@product_1.name}")
