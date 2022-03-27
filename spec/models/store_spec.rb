@@ -60,4 +60,42 @@ RSpec.describe Store, type: :model do
       end
     end
   end
+  describe 'class methods' do
+    it '#first_to_last can sort instances by created_at' do
+      store_1 = Store.create!(
+        name: "Test Store",
+        description: "Store to be tested",
+        address: "123 test st.",
+        rating: 5,
+        sale: 0
+      )
+      sleep(0.1)
+      store_5 = Store.create!(
+        name: "Test Store 5",
+        description: "Store 5 to be tested",
+        address: "125 test st.",
+        rating: 5,
+        sale: 0
+      )
+      sleep(0.1)
+      store_3 = Store.create!(
+        name: "Test Store 3",
+        description: "Store 3 to be tested",
+        address: "124 test st.",
+        rating: 5,
+        sale: 0
+      )
+      sleep(0.1)
+      store_2 = Store.create!(
+        name: "Test Store 2",
+        description: "Store 2 to be tested",
+        address: "121 test st.",
+        rating: 5,
+        sale: 0
+      )
+      # binding.pry
+      expect(Store.all).to eq([store_1, store_5, store_3, store_2])
+      expect(Store.first_to_last).to eq([store_2, store_3, store_5, store_1])
+    end
+  end
 end
