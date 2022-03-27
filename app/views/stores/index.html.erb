@@ -7,6 +7,9 @@
   <p>Created: <%= store.created_at.to_s %><p>
   <p><a href="stores/<%= store.id %>/products">This stores products</a></p>
   <%= button_to "Update #{store.name}", "stores/#{store.id}/edit", method: :get %>
+  <%= form_with url: "/stores/#{store.id}", method: :delete, local: true do |form| %>
+    <%= form.submit "Delete #{store.name}" %>
+  <% end %>
   <hr/>
 <% end %>
 
