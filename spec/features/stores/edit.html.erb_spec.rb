@@ -7,7 +7,7 @@ RSpec.describe "Store edit page" do
       description: "The store one",
       address: "123 fake st.",
       rating: 1,
-      sale: false
+      sale: true
     )
     @store_2 = Store.create!(
       name: "Store 2",
@@ -33,5 +33,17 @@ RSpec.describe "Store edit page" do
     expect(current_path).to eq("/stores/#{@store_1.id}")
     expect(page).to have_content("Store 100")
     expect(page).to have_content("Rating: 5")
+  end
+
+  it 'has a checkbox to decide if there is a sale on' do
+    visit "/stores/#{@store_1.id}/edit"
+
+    expect(page).to have_field('sale', checked: true)
+  end
+
+  it 'has an unchecked box if the sale is off' do
+    visit "/stores/#{@store_2.id}/edit"
+
+    expect(page).to have_field('sale', checked: false)
   end
 end
