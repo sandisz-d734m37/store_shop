@@ -1,5 +1,5 @@
 class Store < ApplicationRecord
-  has_many :products
+  has_many :products, dependent: :destroy
 
   def sale_status
     if sale == true

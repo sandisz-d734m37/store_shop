@@ -40,4 +40,10 @@ class StoresController < ApplicationController
     store.save
     redirect_to "/stores/#{store.id}"
   end
+
+  def destroy
+    Store.destroy(params[:id])
+    redirect_to "/stores"
+    # binding.pry
+  end
 end

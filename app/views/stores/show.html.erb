@@ -13,3 +13,6 @@
 <p><a href="<%= @store.id %>/products">This stores products</a></p><br/>
 
 <a href="/stores/<%= @store.id %>/edit">Update <%= @store.name %></a>
+<%= form_with url: "/stores/#{@store.id}", method: :delete, local: true do |form| %>
+  <%= form.submit "Delete #{@store.name}" %>
+<% end %>

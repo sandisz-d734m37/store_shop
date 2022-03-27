@@ -82,4 +82,38 @@ RSpec.describe 'Store show page', type: :feature do
 
     expect(page).to have_link(href: "/stores/#{@store_1.id}/edit")
   end
+
+  it 'has a button to delete the current store' do
+    # As a visitor
+    # When I visit a parent show page
+    # Then I see a link to delete the parent
+    # When I click the link "Delete Parent"
+    # Then a 'DELETE' request is sent to '/parents/:id',
+    # the parent is deleted, and all child records are deleted
+    # and I am redirected to the parent index page where I no longer see this parent
+    store_3 = Store.create!(
+      name: "Sucky Store",
+      description: "This store is bad and on the way out",
+      address: "Noone even cares smfh",
+      rating: 1,
+      sale: true
+    )
+
+    product_4 = store_3.products.create!(
+      name: 'product four',
+      description: 'The only product at Sucky Store',
+      price: 13000.00,
+      quantity: 19,
+      available_online: false,
+    )
+    visit "/stores/#{store_3.id}"
+    click_button("Delete Sucky Store")
+
+    expect(current_path).to eq("/stores")
+    expect(page).not_to have_content(store_3.name)
+    expect(page).to have_content(@store_2.name)
+
+    click_link("All Products")
+    expect(page).not_to have_content(product_4.name)
+  end
 end
