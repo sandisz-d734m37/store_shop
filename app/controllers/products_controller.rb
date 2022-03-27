@@ -24,4 +24,9 @@ class ProductsController < ApplicationController
     product.save
     redirect_to "/products/#{product.id}"
   end
+
+  def destroy
+    Product.destroy(params[:id])
+    redirect_to "/products"
+  end
 end

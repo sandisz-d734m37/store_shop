@@ -195,7 +195,7 @@ Then a 'DELETE' request is sent to '/parents/:id',
 the parent is deleted, and all child records are deleted
 and I am redirected to the parent index page where I no longer see this parent
 
-[ ] done
+[`X`] done
 _______________________________________________________________________________
 User Story 20, Child Delete
 
@@ -227,7 +227,7 @@ Next to every parent, I see a link to delete that parent
 When I click the link
 I am returned to the Parent Index Page where I no longer see that parent
 
-[ ] done
+[`X`] done
 _______________________________________________________________________________
 User Story 23, Child Delete From Childs Index Page
 

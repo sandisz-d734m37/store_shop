@@ -11,4 +11,8 @@
 <p>Availability: <strong><%= @product.available_online? %></strong></p><br/>
 <p>Available at: <strong><%= @product.store.name %></strong></p><br/>
 
-<%= button_to "Update Product", "#{@product.id}/edit", method: :get %>
+<%= button_to "Update Product", "#{@product.id}/edit", method: :get %><br/><br/>
+
+<%= form_with url: "/products/#{@product.id}", method: :delete, local: true do |form| %>
+  <%= form.submit "Delete #{@product.name}" %>
+<% end %>

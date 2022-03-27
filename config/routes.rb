@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/products/:id', to: 'products#show'
   get '/products/:id/edit', to: 'products#edit'
   patch '/products/:id', to: 'products#update'
+  delete '/products/:id', to: 'products#destroy'
 
   get '/stores/:store_id/products', to: 'store_products#index'
   get '/stores/:store_id/products/new', to: 'store_products#new'
