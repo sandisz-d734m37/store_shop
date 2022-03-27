@@ -2,11 +2,11 @@ class Product < ApplicationRecord
 
   belongs_to :store
 
-  def sale_status
-    if on_sale
-      "Sale is on"
+  def available_online?
+    if available_online
+      "Available Online"
     else
-      "Sale is off"
+      "Unvailable Online"
     end
   end
 

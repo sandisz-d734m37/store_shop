@@ -7,9 +7,7 @@
     <p>Description: <strong><%= product.description %></strong></p>
     <p>Price: <strong>$<%= product.price %></strong></p>
     <p>Total quantity (between all locations): <strong><%= product.quantity %> </strong></p>
-    <p>On sale: <strong><%= product.sale_status %></strong></p>
+    <p>Availability: <strong><%= product.available_online? %></strong></p>
     <p>Available at: <strong><%= product.store.name %></strong></p>
     <hr/>
   <% end %>
-
-<br><h3><a href='/products/new'>Make a new product</a></h3>

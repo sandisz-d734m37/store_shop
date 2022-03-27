@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
       description: params[:product][:description],
       price: params[:product][:price],
       quantity: params[:product][:quantity],
-      on_sale: params[:product][:on_sale],
+      available_online: params[:product][:available_online],
       store_id: params[:product][:store_id]
       })
 

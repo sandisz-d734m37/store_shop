@@ -3,7 +3,7 @@ require 'pry'
 
 RSpec.describe Product, type: :model do
   describe 'instance methods' do
-    describe '#sale_status' do
+    describe '#available_online?' do
 
       before(:each) do
         @store = Store.create!(
@@ -28,7 +28,7 @@ RSpec.describe Product, type: :model do
           description: 'Not a real product',
           price: 1.55,
           quantity: 4,
-          on_sale: true,
+          available_online: true,
           store_id: 1
         )
         @product_2 = Product.create!(
@@ -36,17 +36,17 @@ RSpec.describe Product, type: :model do
           description: 'Not a real product',
           price: 1.80,
           quantity: 4,
-          on_sale: false,
+          available_online: false,
           store_id: 2
         )
       end
 
-      it 'returns "Sale is on" if sale evalutes to true' do
-        expect(@product_1.sale_status).to eq("Sale is on")
+      it 'returns "Available Online" if available_online evalutes to true' do
+        expect(@product_1.available_online?).to eq("Available Online")
       end
 
-      it 'returns "Sale is off" if sale evalutes to true' do
-        expect(@product_2.sale_status).to eq("Sale is off")
+      it 'returns "Unvailable Online" if available_online evalutes to true' do
+        expect(@product_2.available_online?).to eq("Unvailable Online")
       end
 
       it 'returns the store name according to the products store_id (foreign key)' do

@@ -44,7 +44,7 @@ RSpec.describe Store, type: :model do
           description: 'Test product',
           price: 100.00,
           quantity: 5,
-          on_sale: false,
+          available_online: false,
           store_id: store.id
         )
         prod_2 = Product.create!(
@@ -52,7 +52,7 @@ RSpec.describe Store, type: :model do
           description: 'Test product',
           price: 100.00,
           quantity: 5,
-          on_sale: false,
+          available_online: false,
           store_id: store.id
         )
 

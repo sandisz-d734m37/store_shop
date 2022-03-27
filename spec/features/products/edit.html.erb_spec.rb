@@ -22,7 +22,7 @@ RSpec.describe 'Product edit' do
       description: "first product",
       price: 1.04,
       quantity: 1,
-      on_sale: true,
+      available_online: true,
       store_id: @store_1.id
     )
     @product_2 = Product.create!(
@@ -30,7 +30,7 @@ RSpec.describe 'Product edit' do
       description: "second product",
       price: 35.04,
       quantity: 80010,
-      on_sale: false,
+      available_online: false,
       store_id: @store_2.id
     )
   end

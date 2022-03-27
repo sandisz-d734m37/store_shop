@@ -22,7 +22,7 @@ RSpec.describe 'Store show page', type: :feature do
       description: 'Test product',
       price: 100.00,
       quantity: 5,
-      on_sale: false,
+      available_online: false,
       store_id: @store_2.id
     )
     @prod_2 = Product.create!(
@@ -30,7 +30,7 @@ RSpec.describe 'Store show page', type: :feature do
       description: 'Test product number two',
       price: 1300.00,
       quantity: 1,
-      on_sale: false,
+      available_online: false,
       store_id: @store_2.id
     )
     @prod_3 = Product.create!(
@@ -38,7 +38,7 @@ RSpec.describe 'Store show page', type: :feature do
       description: 'Test product number two',
       price: 1300.00,
       quantity: 1,
-      on_sale: false,
+      available_online: false,
       store_id: @store_1.id
     )
   end

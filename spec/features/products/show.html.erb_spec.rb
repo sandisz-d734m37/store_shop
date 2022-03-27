@@ -22,7 +22,7 @@ RSpec.describe "products/index/show", type: :feature do
       description: "first product",
       price: 1.04,
       quantity: 1,
-      on_sale: true,
+      available_online: true,
       store_id: @store_1.id
     )
     @product_2 = Product.create!(
@@ -30,7 +30,7 @@ RSpec.describe "products/index/show", type: :feature do
       description: "second product",
       price: 35.04,
       quantity: 80010,
-      on_sale: false,
+      available_online: false,
       store_id: @store_2.id
     )
   end
@@ -42,7 +42,7 @@ RSpec.describe "products/index/show", type: :feature do
     expect(page).to have_content(@product_1.description)
     expect(page).to have_content(@product_1.price)
     expect(page).to have_content(@product_1.quantity)
-    expect(page).to have_content(@product_1.sale_status)
+    expect(page).to have_content(@product_1.available_online?)
     expect(page).to have_content(@store_1.name)
     expect(page).not_to have_content(@product_2.name)
     expect(page).not_to have_content(@store_2.name)

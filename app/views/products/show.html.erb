@@ -8,7 +8,7 @@
 <p>Description: <strong><%= @product.description %></strong></p>
 <p>Price: <strong><%= @product.price %></strong></p>
 <p>Quantity: <strong><%= @product.quantity %></strong></p>
-<p>Sale: <strong><%= @product.sale_status %></strong></p><br/>
+<p>Availability: <strong><%= @product.available_online? %></strong></p><br/>
 <p>Available at: <strong><%= @product.store.name %></strong></p><br/>
 
 <%= button_to "Update Product", "#{@product.id}/edit", method: :get %>
