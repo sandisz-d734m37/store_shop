@@ -6,6 +6,7 @@
   <h2><a href="/stores/<%= store.id %>"><%= store.name %></a></h2>
   <p>Created: <%= store.created_at.to_s %><p>
   <p><a href="stores/<%= store.id %>/products">This stores products</a></p>
+  <%= button_to "Update #{store.name}", "stores/#{store.id}/edit", method: :get %>
   <hr/>
 <% end %>
 
