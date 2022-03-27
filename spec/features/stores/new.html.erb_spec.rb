@@ -13,4 +13,10 @@ RSpec.describe "New Store page" do
     expect(current_path).to eq("/stores")
     expect(page).to have_content("Super Store")
   end
+
+  it 'has a checkbox to decide if there is a sale on' do
+    visit "/stores/new"
+
+    expect(page).to have_field('sale', checked: false)
+  end
 end
