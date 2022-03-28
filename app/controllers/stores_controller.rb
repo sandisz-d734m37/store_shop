@@ -8,36 +8,41 @@ class StoresController < ApplicationController
 
   def create
     store = Store.new({
-      name: params[:store][:name],
-      description: params[:store][:description],
-      address: params[:store][:address],
-      rating: params[:store][:rating],
-      sale: params[:store][:sale]
+      name: params[:name],
+      description: params[:description],
+      address: params[:address],
+      rating: params[:rating],
+      sale: params[:sale]
       })
 
     store.save
 
     redirect_to '/stores'
-    # binding.pry
   end
 
   def show
     @store = Store.find(params[:id])
   end
 
-  def edit_info
+  def edit
     @store = Store.find(params[:id])
   end
 
   def update
     store = Store.find(params[:id])
     store.update({
-      name: params[:store][:name],
-      description: params[:store][:description],
-      address: params[:store][:address],
-      rating: params[:store][:rating]
+      name: params[:name],
+      description: params[:description],
+      address: params[:address],
+      rating: params[:rating],
+      sale: params[:sale]
       })
     store.save
     redirect_to "/stores/#{store.id}"
+  end
+
+  def destroy
+    Store.destroy(params[:id])
+    redirect_to "/stores"
   end
 end

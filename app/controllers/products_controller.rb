@@ -3,25 +3,32 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def new
+  def show
+    @product = Product.find(params[:id])
   end
 
-  def create
-    product = Product.new({
-      name: params[:product][:name],
-      description: params[:product][:description],
-      price: params[:product][:price],
-      quantity: params[:product][:quantity],
-      on_sale: params[:product][:on_sale],
-      store_id: params[:product][:store_id]
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    product = Product.find(params[:id])
+
+    product.update({
+      name: params[:name],
+      description: params[:description],
+      price: params[:price],
+      quantity: params[:quantity],
+      available_online: params[:available_online]
       })
 
     product.save
-
-    redirect_to '/products'
+    
+    redirect_to "/products/#{product.id}"
   end
 
-  def show
-    @product = Product.find(params[:id])
+  def destroy
+    Product.destroy(params[:id])
+    redirect_to "/products"
   end
 end

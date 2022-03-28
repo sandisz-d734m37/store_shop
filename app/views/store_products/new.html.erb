@@ -1,0 +1,17 @@
+<!-- <a href="store/<%# <%= @store.id %>">Back to <%# <%= @store.name %> Products</a><br/> -->
+
+<%= form_with url: "/stores/#{@store.id}/products", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %><br/><br/>
+  <%= form.label :description %>
+  <%= form.text_field :description %><br/><br/>
+  <%= form.label :price %>
+  <%= form.number_field :price, step: 0.01 %><br/><br/>
+  <%= form.label :quantity %>
+  <%= form.number_field :quantity %><br/><br/>
+  <%= form.label :available_online %>
+  <%= form.check_box :available_online, checked: true %><br/><br/>
+
+
+  <%= form.submit "Create Product" %>
+<% end %>

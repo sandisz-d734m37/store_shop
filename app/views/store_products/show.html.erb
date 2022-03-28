@@ -1,3 +1,4 @@
+<a href="/stores/<%= @store.id %>/products">Back to <%= @store.name %>'s products</a>
 
 <h2><%= @product.name %> Informtation:</h2>
 <h4>Name:</h4>
@@ -9,8 +10,8 @@
 <p>Availability: <strong><%= @product.available_online? %></strong></p><br/>
 <p>Available at: <strong><%= @product.store.name %></strong></p><br/>
 
-<%= button_to "Update Product", "#{@product.id}/edit", method: :get %><br/><br/>
+<%= button_to "Update Product", "#{@product.id}/edit", method: :get %>
 
-<%= form_with url: "/products/#{@product.id}", method: :delete, local: true do |form| %>
+<%= form_with url: "/stores/#{@store.id}/products/#{@product.id}", method: :delete, local: true do |form| %>
   <%= form.submit "Delete #{@product.name}" %>
 <% end %>

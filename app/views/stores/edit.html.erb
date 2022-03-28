@@ -1,0 +1,18 @@
+<a href="/stores">Back to All Stores</a><br/>
+<a href="/products">Back to All Products</a>
+
+<%= form_with url: "/stores/#{@store.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, value: @store.name %><br/><br/>
+  <%= form.label :description %>
+  <%= form.text_field :description, value: @store.description %><br/><br/>
+  <%= form.label :address %>
+  <%= form.text_field :address, value: @store.address %><br/><br/>
+  <%= form.label :rating %>
+  <%= form.text_field :rating, value: 5 %><br/><br/><br/><br/>
+  <%= form.label :sale %>
+  <%= form.check_box :sale, checked: @store.sale %><br/><br/>
+
+
+  <%= form.submit "Update" %>
+<% end %>

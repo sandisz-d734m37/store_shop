@@ -1,8 +1,8 @@
 class Store < ApplicationRecord
-  has_many :products
+  has_many :products, dependent: :destroy
 
   def sale_status
-    if sale == true
+    if sale
       return "Sale is on"
     else
       return "Sale is off"
@@ -10,12 +10,10 @@ class Store < ApplicationRecord
   end
 
   def product_count
-    # product = Product.where(store_id: id)
-    # product.length
     products.count
   end
 
-    def self.first_to_last
-      order(created_at: :desc)
-    end
+  def self.first_to_last
+    order(created_at: :desc)
+  end
 end

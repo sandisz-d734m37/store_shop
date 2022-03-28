@@ -22,7 +22,7 @@ RSpec.describe "products/index/show", type: :feature do
       description: "first product",
       price: 1.04,
       quantity: 1,
-      on_sale: true,
+      available_online: true,
       store_id: @store_1.id
     )
     @product_2 = Product.create!(
@@ -30,7 +30,7 @@ RSpec.describe "products/index/show", type: :feature do
       description: "second product",
       price: 35.04,
       quantity: 80010,
-      on_sale: false,
+      available_online: false,
       store_id: @store_2.id
     )
   end
@@ -42,7 +42,7 @@ RSpec.describe "products/index/show", type: :feature do
     expect(page).to have_content(@product_1.description)
     expect(page).to have_content(@product_1.price)
     expect(page).to have_content(@product_1.quantity)
-    expect(page).to have_content(@product_1.sale_status)
+    expect(page).to have_content(@product_1.available_online?)
     expect(page).to have_content(@store_1.name)
     expect(page).not_to have_content(@product_2.name)
     expect(page).not_to have_content(@store_2.name)
@@ -58,5 +58,35 @@ RSpec.describe "products/index/show", type: :feature do
     visit "/products/#{@product_1.id}"
 
     expect(page).to have_link(href: "/stores")
+  end
+
+  it 'has a button to update product info' do
+    visit "/products/#{@product_1.id}"
+    expect(page).to have_button("Update Product")
+
+    click_button("Update Product")
+    expect(current_path).to eq("/products/#{@product_1.id}/edit")
+  end
+
+  it 'has a button to delete itself' do
+    deletable_product = @store_1.products.create(
+      name: "deleteable",
+      description: "deleteable product",
+      price: 300.04,
+      quantity: 810,
+      available_online: true,
+    )
+
+    visit "/products/#{deletable_product.id}"
+
+    expect(page).to have_content("deleteable")
+    expect(page).to have_content("Description: #{deletable_product.description}")
+    expect(page).to have_button("Delete deleteable")
+
+    click_button("Delete deleteable")
+
+    expect(current_path).to eq("/products")
+    expect(page).not_to have_content("deleteable")
+    expect(page).not_to have_content("Description: deleteable product")
   end
 end

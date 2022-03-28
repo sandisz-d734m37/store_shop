@@ -26,14 +26,14 @@ RSpec.describe 'Stores products index' do
         description: "first product",
         price: 1.04,
         quantity: 1,
-        on_sale: true
+        available_online: true
       )
       @product_2 = @store_2.products.create!(
         name: "product 2",
         description: "second product",
         price: 35.04,
         quantity: 80010,
-        on_sale: false
+        available_online: false
       )
   end
 
@@ -65,11 +65,11 @@ RSpec.describe 'Stores products index' do
     expect(page).not_to have_content(@product_2.quantity)
   end
 
-  it 'shows all the product sale statuses for the store' do
+  it 'shows all the product online availability statuses for the store' do
     visit "/stores/#{@store_1.id}/products"
 
-    expect(page).to have_content(@product_1.sale_status)
-    expect(page).not_to have_content(@product_2.sale_status)
+    expect(page).to have_content(@product_1.available_online?)
+    expect(page).not_to have_content(@product_2.available_online?)
   end
 
   it 'displays a link to the product index' do
@@ -82,5 +82,45 @@ RSpec.describe 'Stores products index' do
     visit "/stores/#{@store_1.id}/products"
 
     expect(page).to have_link(href: "/stores")
+  end
+
+  it 'has a link to add a new product to the store' do
+    visit "/stores/#{@store_1.id}/products"
+
+    click_button("Add product to #{@store_1.name}")
+
+    expect(current_path).to eq("/stores/#{@store_1.id}/products/new")
+  end
+
+  it 'has links to individual product show pages' do
+    visit "/stores/#{@store_1.id}/products"
+    # save_and_open_page
+    click_link "product 1"
+
+    expect(current_path).to eq("/stores/#{@store_1.id}/products/#{@product_1.id}")
+  end
+
+  it 'has a button to update each product' do
+    visit "/stores/#{@store_1.id}/products"
+
+    expect(page).to have_button("Update #{@product_1.name}")
+
+    click_button("Update #{@product_1.name}")
+
+    expect(current_path).to eq("/stores/#{@store_1.id}/products/#{@product_1.id}/edit")
+    expect(page).to have_field("Name", with: "#{@product_1.name}")
+    expect(page).to have_field("Description", with: "#{@product_1.description}")
+  end
+
+  it 'has a buttons to delete products' do
+    visit "/stores/#{@store_1.id}/products"
+
+    expect(page).to have_button("Delete #{@product_1.name}")
+
+    click_button("Delete #{@product_1.name}")
+
+    expect(current_path).to eq("/stores/#{@store_1.id}/products")
+    expect(page).not_to have_content(@product_1.name)
+    expect(page).not_to have_content(@product_1.description)
   end
 end
