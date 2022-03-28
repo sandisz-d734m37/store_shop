@@ -123,4 +123,23 @@ RSpec.describe 'Stores products index' do
     expect(page).not_to have_content(@product_1.name)
     expect(page).not_to have_content(@product_1.description)
   end
+
+  it 'has a link to sort products alphabetically' do
+    product_3 = @store_1.products.create!(
+      name: "A roduct",
+      description: "Z product",
+      price: 1.01,
+      quantity: 1,
+      available_online: true
+    )
+    visit "stores/#{@store_1.id}/products"
+    # save_and_open_page
+    expect(@product_1.name).to appear_before(product_3.name)
+
+    click_link("Sort products alphabetically")
+    expect(current_path).to eq("/stores/#{@store_1.id}/products")
+
+    expect(product_3.name).to appear_before(@product_1.name)
+    expect(page).not_to have_content(@product_2.name)
+  end
 end
