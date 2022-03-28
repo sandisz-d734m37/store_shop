@@ -1,4 +1,6 @@
 <body style="background-color: beige;">
+  <%= link_to "Sort products alphabetically", "/stores/#{@store[:id]}/products?sort_by=name-ascending", method: :get %>
+  <!-- <p><a href="/stores/<%# <%= @store.id %>/products?sort_by=name-ascending" style="color: black">Sort products alphabetically</a></p> -->
   <p><a href="/stores/<%= @store.id %>" style="color: black">Back to <%= @store.name %></a><br/></p>
 
   <h1 style="color: black"> <%= @store.name %>'s products</h1><hr/>

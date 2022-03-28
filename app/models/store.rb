@@ -16,4 +16,8 @@ class Store < ApplicationRecord
   def self.first_to_last
     order(created_at: :desc)
   end
+
+  def alphabetize_asc
+     products.order(name: :asc)
+  end
 end
