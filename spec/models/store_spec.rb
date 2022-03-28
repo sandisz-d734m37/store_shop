@@ -38,7 +38,6 @@ RSpec.describe Store, type: :model do
           rating: '5',
           sale: false
         )
-
         prod_1 = Product.create!(
           name: 'product one',
           description: 'Test product',
@@ -57,6 +56,33 @@ RSpec.describe Store, type: :model do
         )
 
         expect(store.product_count).to eq(2)
+      end
+
+      it '#alphabetize_asc sorts products alphabetically' do
+        store = Store.create!(
+          name: 'test store',
+          description: 'this is a test',
+          address: '123 fake st.',
+          rating: '5',
+          sale: false
+        )
+        prod_1 = store.products.create!(
+          name: 'Z product',
+          description: 'Test product',
+          price: 100.00,
+          quantity: 5,
+          available_online: false
+        )
+        prod_2 = store.products.create!(
+          name: 'A product',
+          description: 'Test product',
+          price: 100.00,
+          quantity: 5,
+          available_online: false
+        )
+
+        expect(store.products).to eq([prod_1, prod_2])
+        expect(store.alphabetize_asc).to eq([prod_2, prod_1])
       end
     end
   end
