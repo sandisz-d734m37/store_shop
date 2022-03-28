@@ -1,22 +1,24 @@
-<a href="/stores">Back to All Stores</a></br>
-<a href="/stores/<%= @store.id %>">Back to <%= @store.name %></a></br>
-<a href="/products">Back to All Products</a>
+<body style="background-color: beige;">
+  <p><a href="/stores/<%= @store.id %>" style="color: black">Back to <%= @store.name %></a><br/></p>
 
-<h1> <%= @store.name %>'s products</h1><hr/>
+  <h1 style="color: black"> <%= @store.name %>'s products</h1><hr/>
 
-<% @products.each do |product| %>
-  <h3><a href="/stores/<%= @store.id %>/products/<%= product.id %>"><%= product.name %></a></h3>
-  <p><%= product.description %></p>
-  <p><%= product.price %></p>
-  <p><%= product.quantity %></p>
-  <p><%= product.available_online? %></p>
-  <br/><br/>
-  <%= button_to "Update #{product.name}", "/stores/#{@store.id}/products/#{product.id}/edit", method: :get %>
-  <br/><br/>
-  <%= form_with url: "/stores/#{@store.id}/products/#{product.id}", method: :delete, local: true do |form| %>
-    <%= form.submit "Delete #{product.name}" %>
+  <div style="width: 800px; background-color: LightSlateGrey; padding: 20px; border-radius: 25px;">
+  <% @products.each do |product| %>
+      <h3><a href="/stores/<%= @store.id %>/products/<%= product.id %>" style="color:black;""><%= product.name %></a></h3>
+      <p style="color:black;"><%= product.description %></p>
+      <p style="color:black;"><%= product.price %></p>
+      <p style="color:black;"><%= product.quantity %></p>
+      <p style="color:black;"><%= product.available_online? %></p>
+      <br/><br/>
+      <%= button_to "Update #{product.name}", "/stores/#{@store.id}/products/#{product.id}/edit", method: :get %>
+      <br/><br/>
+      <%= form_with url: "/stores/#{@store.id}/products/#{product.id}", method: :delete, local: true do |form| %>
+        <%= form.submit "Delete #{product.name}" %>
+      <% end %>
+    <hr/>
   <% end %>
-  <hr/>
-<% end %>
+  <div/>
 
-<%= button_to "Add product to #{@store.name}", "/stores/#{@store.id}/products/new", method: :get %>
+  <%= button_to "Add product to #{@store.name}", "/stores/#{@store.id}/products/new", method: :get %>
+</body>

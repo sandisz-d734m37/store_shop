@@ -1,16 +1,18 @@
-<a href="/products">All Products</a>
-
-<h1>All of your very many stores</h1>
-<h4> as you've created and wanted to see (read) them</h4><br><br><hr>
-<% @stores.each do |store| %>
-  <h2><a href="/stores/<%= store.id %>"><%= store.name %></a></h2>
-  <p>Created: <%= store.created_at.to_s %><p>
-  <p><a href="stores/<%= store.id %>/products">This stores products</a></p>
-  <%= button_to "Update #{store.name}", "stores/#{store.id}/edit", method: :get %>
-  <%= form_with url: "/stores/#{store.id}", method: :delete, local: true do |form| %>
-    <%= form.submit "Delete #{store.name}" %>
+<body style="background-color: beige;">
+  <h1 style="color: black;">All of your very many stores</h1>
+  <h4 style="color: black;"> as you've created and wanted to see (read) them</h4><br><br><hr>
+  <% @stores.each do |store| %>
+    <div style="width: 800px; background-color: LightSlateGrey; padding: 20px; border-radius: 25px;">
+      <h2><a href="/stores/<%= store.id %>" style="color: black; padding: 5px;"><%= store.name %></a></h2>
+      <p style="color: black; padding: 5px; width: 41%;">Created: <%= store.created_at.to_s %><p>
+      <p><a href="stores/<%= store.id %>/products" style="color: black; padding: 5px;">This stores products</a></p>
+      <%= button_to "Update #{store.name}", "stores/#{store.id}/edit", method: :get %><br/>
+      <%= form_with url: "/stores/#{store.id}", method: :delete, local: true do |form| %>
+        <%= form.submit "Delete #{store.name}" %>
+      <% end %>
+    </div>
+    <hr/>
   <% end %>
-  <hr/>
-<% end %>
 
-<br><h3><a href='/stores/new'>New Store</a></h3>
+  <br><h3 style="width: 800px; background-color: LightSlateGrey; padding: 20px; border-radius: 25px;"><a href='/stores/new' style="color: black;">New Store</a></h3>
+</body>

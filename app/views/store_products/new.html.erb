@@ -1,5 +1,3 @@
-<a href="/stores">Back to All Stores</a><br/>
-<a href="/products">Back to All Products</a><br/><br/>
 <!-- <a href="store/<%# <%= @store.id %>">Back to <%# <%= @store.name %> Products</a><br/> -->
 
 <%= form_with url: "/stores/#{@store.id}/products", method: :post, local: true do |form| %>
