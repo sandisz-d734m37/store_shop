@@ -1,6 +1,10 @@
 class StoresController < ApplicationController
   def index
-    @stores = Store.first_to_last
+    if params[:search_q].present?
+      @stores = Store.search_by_name(params[:search_q])
+    else
+      @stores = Store.first_to_last
+    end
   end
 
   def new

@@ -1,21 +1,43 @@
 <body style="background-color: beige;">
   <h1 style="color: black">All Products<h1><hr/>
-  <% @products.each do |product| %>
-    <% if product.available_online %>
-        <h3><a href="/products/<%= product.id %>"><%= product.name %></a></h3>
-        <p>Description: <strong><%= product.description %></strong></p>
-        <p>Price: <strong>$<%= product.price %></strong></p>
-        <p>Total quantity (between all locations): <strong><%= product.quantity %> </strong></p>
-        <p>Availability: <strong><%= product.available_online? %></strong></p>
-        <p>Available at: <strong><%= product.store.name %></strong></p>
-        <br/><br/>
-        <%= button_to "Update #{product.name}", "products/#{product.id}/edit", method: :get %>
-        <br/>
-        <%= form_with url: "/products/#{product.id}", method: :delete, local: true do |form| %>
-          <%= form.submit "Delete #{product.name}" %>
-      <% end %>
-      <hr/>
-
+    <%= form_with url:"/products?search_q=#{params[:search_q]}", method: :get, local: true do |form|%>
+      <%= form.label :query, "Search by name"  %>
+      <%= form.text_field :query, name: :search_q %>
+      <%= form.submit "Search" %>
     <% end %>
+  <% if (@products.class != Product && @products.class != NilClass) || @products.class == Array%>
+    <% @products.each do |product| %>
+      <% if product.available_online %>
+          <h3><a href="/products/<%= product.id %>"><%= product.name %></a></h3>
+          <p>Description: <strong><%= product.description %></strong></p>
+          <p>Price: <strong>$<%= product.price %></strong></p>
+          <p>Total quantity (between all locations): <strong><%= product.quantity %> </strong></p>
+          <p>Availability: <strong><%= product.available_online? %></strong></p>
+          <p>Available at: <strong><%= product.store.name %></strong></p>
+          <br/><br/>
+          <%= button_to "Update #{product.name}", "products/#{product.id}/edit", method: :get %>
+          <br/>
+          <%= form_with url: "/products/#{product.id}", method: :delete, local: true do |form| %>
+            <%= form.submit "Delete #{product.name}" %>
+        <% end %>
+        <hr/>
+      <% end %>
+    <% end %>
+  <% elsif @products.class == NilClass %>
+    <h3> Nothing matches <%= params[:search_q] %> </h3>
+  <% else %>
+    <h3><a href="/products/<%= @products.id %>"><%= @products.name %></a></h3>
+    <p>Description: <strong><%= @products.description %></strong></p>
+    <p>Price: <strong>$<%= @products.price %></strong></p>
+    <p>Total quantity (between all locations): <strong><%= @products.quantity %> </strong></p>
+    <p>Availability: <strong><%= @products.available_online? %></strong></p>
+    <p>Available at: <strong><%= @products.store.name %></strong></p>
+    <br/><br/>
+    <%= button_to "Update #{@products.name}", "products/#{@products.id}/edit", method: :get %>
+    <br/>
+    <%= form_with url: "/products/#{@products.id}", method: :delete, local: true do |form| %>
+      <%= form.submit "Delete #{@products.name}" %>
+    <% end %>
+  <hr/>
   <% end %>
 </body>

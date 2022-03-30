@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  validates_presence_of :name, :description, :price, :quantity
 
   belongs_to :store
 
@@ -9,4 +10,12 @@ class Product < ApplicationRecord
       "Unvailable Online"
     end
   end
+
+  def self.filter_by_quantity(num)
+    where ("quantity >= #{num}")
+  end
+
+  # def self.search_by_name(input)
+  #   find_by(name: "#{input}")
+  # end
 end

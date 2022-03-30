@@ -101,4 +101,34 @@ Created: #{@store_2.created_at.to_s}"
     click_link("All Products")
     expect(page).not_to have_content(product_4.name)
   end
+
+  scenario 'when I type a keyword into the search field, I only see stores with exact matching names' do
+    visit "/stores"
+
+    expect(page).to have_content(@store_1.name)
+    expect(page).to have_content(@store_2.name)
+
+    expect(page).to have_field('Search by name')
+    fill_in('Search by name', with: @store_2.name)
+    click_button('Search')
+
+    expect(current_path).to eq("/stores")
+    expect(page).to have_content(@store_2.name)
+    expect(page).not_to have_content(@store_1.name)
+  end
+
+  scenario 'when I type a keyword into the search field, I only see stores with exact matching names' do
+    visit "/stores"
+
+    expect(page).to have_content(@store_1.name)
+    expect(page).to have_content(@store_2.name)
+
+    expect(page).to have_field('Search by name')
+    fill_in('Search by name', with: @store_2.name)
+    click_button('Search')
+
+    expect(current_path).to eq("/stores")
+    expect(page).to have_content(@store_2.name)
+    expect(page).not_to have_content(@store_1.name)
+  end
 end

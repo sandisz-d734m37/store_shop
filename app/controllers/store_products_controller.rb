@@ -1,7 +1,13 @@
 class StoreProductsController < ApplicationController
   def index
     @store = Store.find(params[:store_id])
-    @products = @store.products
+    if params[:product_quantity].present?
+      @products = @store.products.filter_by_quantity(params[:product_quantity])
+    elsif params[:sort_by] == "name-ascending"
+      @products = @store.alphabetize_asc
+    else
+      @products = @store.products
+    end
   end
 
   def new

@@ -1,7 +1,17 @@
 <body style="background-color: beige;">
+  <!-- <p><a href="/stores/<%# <%= @store.id %>/products?sort_by=name-ascending" style="color: black">Sort products alphabetically</a></p> -->
   <p><a href="/stores/<%= @store.id %>" style="color: black">Back to <%= @store.name %></a><br/></p>
 
-  <h1 style="color: black"> <%= @store.name %>'s products</h1><hr/>
+  <h1 style="color: black"> <%= @store.name %>'s products</h1>
+  <hr/><br/>
+  <%= link_to "Sort products alphabetically", "/stores/#{@store[:id]}/products?sort_by=name-ascending", method: :get %>
+  <br/>
+  <%= form_with url:"/stores/#{@store[:id]}/products?product_quantity=#{params[:product_quantity]}", method: :get, local: true do |form|%>
+    <%= form.label :query, "Only return products with quantity"  %>
+    <%= form.number_field :query, name: :product_quantity %>
+    <%= form.submit "Filter" %>
+  <% end %>
+  <br/>
 
   <div style="width: 800px; background-color: LightSlateGrey; padding: 20px; border-radius: 25px;">
   <% @products.each do |product| %>
