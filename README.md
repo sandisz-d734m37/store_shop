@@ -1,24 +1,8 @@
-# README
+Welcome to the Store Shop!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To operate, simply clone this repository to your local computer, navigate into it in your terminal, run "bundle install" in your terminal, check you have Rails installed, and run "rails s" in your terminal to get the server running!
 
-Things you may want to cover:
+The, you'll visit localhost:3000 in your browser and watch as your wildest dreams come true before your very eyes.
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Here is a visual representation of the Schema for your viewing pleasure:
