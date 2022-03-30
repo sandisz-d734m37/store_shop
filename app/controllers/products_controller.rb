@@ -1,6 +1,10 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    if params[:search_q].present?
+      @products = Product.search_by_name(params[:search_q])
+    else
+      @products = Product.all
+    end
   end
 
   def show
@@ -23,7 +27,7 @@ class ProductsController < ApplicationController
       })
 
     product.save
-    
+
     redirect_to "/products/#{product.id}"
   end
 

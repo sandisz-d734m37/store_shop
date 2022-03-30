@@ -15,4 +15,8 @@ class Product < ApplicationRecord
   def self.filter_by_quantity(num)
     where ("quantity >= #{num}")
   end
+
+  # def self.search_by_name(input)
+  #   find_by(name: "#{input}")
+  # end
 end
