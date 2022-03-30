@@ -10,10 +10,6 @@ class StoreProductsController < ApplicationController
     end
   end
 
-  def something_made_up
-    @products = @store.products.filter_by_quantity(params[:product_quantity])
-  end
-
   def new
     @store = Store.find(params[:store_id])
   end
