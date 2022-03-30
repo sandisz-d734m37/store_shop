@@ -1,4 +1,5 @@
 <%= form_with url: "/stores/#{@store.id}/products/#{@product.id}", method: :patch, local: true do |form| %>
+
   <%= form.label :name %>
   <%= form.text_field :name, value: @product.name %>
   <%= form.label :description %>

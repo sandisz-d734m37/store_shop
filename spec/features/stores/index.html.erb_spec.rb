@@ -29,24 +29,10 @@ RSpec.describe "stores/index", type: :feature do
 
   it "is ordered by created_at and displays created_at" do
     visit "/stores"
-    # binding.pry
 
     expect(page).to have_content(@store_1.created_at.to_s)
     expect(page).to have_content(@store_2.created_at.to_s)
-    expect(page.text).to include(
-      "Store 2
-Created: #{@store_2.created_at.to_s}
-This stores products
-Store 1
-Created: #{@store_1.created_at.to_s}"
-    )
-    expect(page.text).not_to include(
-      "Store 1
-Created: #{@store_1.created_at.to_s}
-This stores products
-Store 2
-Created: #{@store_2.created_at.to_s}"
-    )
+    expect(@store_2.name).to appear_before(@store_1.name)
   end
 
   it 'displays a link to the product index' do
@@ -78,7 +64,7 @@ Created: #{@store_2.created_at.to_s}"
     store_3 = Store.create!(
       name: "Sucky Store",
       description: "This store is bad and on the way out",
-      address: "Noone even cares smfh",
+      address: "Noone even cares",
       rating: 1,
       sale: true
     )

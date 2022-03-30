@@ -1,11 +1,14 @@
 <body style="background-color: beige;">
   <h1 style="color: black">All Products<h1><hr/>
+
     <%= form_with url:"/products?search_q=#{params[:search_q]}", method: :get, local: true do |form|%>
       <%= form.label :query, "Search by name"  %>
       <%= form.text_field :query, name: :search_q %>
       <%= form.submit "Search" %>
     <% end %>
+
   <% if (@products.class != Product && @products.class != NilClass) || @products.class == Array%>
+
     <% @products.each do |product| %>
       <% if product.available_online %>
           <h3><a href="/products/<%= product.id %>"><%= product.name %></a></h3>
@@ -23,9 +26,13 @@
         <hr/>
       <% end %>
     <% end %>
+
   <% elsif @products.class == NilClass %>
+
     <h3> Nothing matches <%= params[:search_q] %> </h3>
+
   <% else %>
+
     <h3><a href="/products/<%= @products.id %>"><%= @products.name %></a></h3>
     <p>Description: <strong><%= @products.description %></strong></p>
     <p>Price: <strong>$<%= @products.price %></strong></p>
@@ -39,5 +46,7 @@
       <%= form.submit "Delete #{@products.name}" %>
     <% end %>
   <hr/>
+
   <% end %>
+  
 </body>

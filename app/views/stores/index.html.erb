@@ -1,13 +1,16 @@
 <body style="background-color: beige;">
-  <h1 style="color: black;">All of your very many stores</h1>
-  <h4 style="color: black;"> as you've created and wanted to see (read) them</h4>
+
+  <h1 style="color: black;">All of your stores</h1>
+
   <%= form_with url:"/stores?search_q=#{params[:search_q]}", method: :get, local: true do |form|%>
     <%= form.label :query, "Search by name"  %>
     <%= form.text_field :query, name: :search_q %>
     <%= form.submit "Search" %>
   <% end %>
   <br><hr>
+
   <% if (@stores.class != Store && @stores.class != NilClass) || @stores.class == Array%>
+
     <% @stores.each do |store| %>
       <div style="width: 800px; background-color: LightSlateGrey; padding: 20px; border-radius: 25px;">
         <h2><a href="/stores/<%= store.id %>" style="color: black; padding: 5px;"><%= store.name %></a></h2>
@@ -20,9 +23,13 @@
       </div>
       <hr/>
     <% end %>
+
   <% elsif @stores.class == NilClass %>
+
     <h3> Nothing matches <%= params[:search_q] %> </h3>
+
   <% else %>
+
     <div style="width: 800px; background-color: LightSlateGrey; padding: 20px; border-radius: 25px;">
       <h2><a href="/stores/<%= @stores.id %>" style="color: black; padding: 5px;"><%= @stores.name %></a></h2>
       <p style="color: black; padding: 5px; width: 41%;">Created: <%= @stores.created_at.to_s %><p>
@@ -33,6 +40,8 @@
       <% end %>
     </div>
     <hr/>
+
   <% end %>
+
   <br><h3 style="width: 800px; background-color: LightSlateGrey; padding: 20px; border-radius: 25px;"><a href='/stores/new' style="color: black;">New Store</a></h3>
 </body>

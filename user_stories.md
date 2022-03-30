@@ -249,4 +249,4 @@ Then I see a text box to filter results by keyword
 When I type in a keyword that is an exact match of one or more of my records and press the Search button
 Then I only see records that are an exact match returned on the page
 
-[ ] done
+[`X`] done
