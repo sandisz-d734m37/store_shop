@@ -7,6 +7,8 @@ RSpec.describe "New Store page" do
     fill_in('Name', with: 'Super Store')
     fill_in('Description', with: 'A Super Duper Store')
     fill_in('Address', with: '123 Fake st')
+    fill_in('Rating', with: 4)
+
 
     click_button('Create Store')
 

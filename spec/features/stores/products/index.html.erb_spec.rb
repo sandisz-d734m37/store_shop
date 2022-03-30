@@ -133,7 +133,7 @@ RSpec.describe 'Stores products index' do
       available_online: true
     )
     visit "stores/#{@store_1.id}/products"
-    # save_and_open_page
+
     expect(@product_1.name).to appear_before(product_3.name)
 
     click_link("Sort products alphabetically")
@@ -141,5 +141,37 @@ RSpec.describe 'Stores products index' do
 
     expect(product_3.name).to appear_before(@product_1.name)
     expect(page).not_to have_content(@product_2.name)
+  end
+
+  it 'can filter products based on quantity' do
+    prod_3 = @store_1.products.create!(
+      name: "Product 3",
+      description: "Z product",
+      price: 1.01,
+      quantity: 6,
+      available_online: true
+    )
+    prod_4 = @store_1.products.create!(
+      name: "Product 4",
+      description: "x product",
+      price: 9.01,
+      quantity: 30,
+      available_online: true
+    )
+    visit "/stores/#{@store_1.id}/products"
+
+    expect(page).to have_content(@product_1.name)
+    expect(page).to have_content(prod_3.name)
+    expect(page).to have_content(prod_4.name)
+
+    expect(page).to have_field('Only return products with quantity')
+    fill_in('Only return products with quantity', with: 6)
+    click_button('Filter')
+
+    expect(current_path).to eq("/stores/#{@store_1.id}/products")
+
+    expect(page).not_to have_content(@product_1.name)
+    expect(page).to have_content(prod_3.name)
+    expect(page).to have_content(prod_4.name)
   end
 end
