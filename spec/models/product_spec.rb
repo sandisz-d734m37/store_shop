@@ -63,6 +63,12 @@ RSpec.describe Product, type: :model do
         expect(Product.filter_by_quantity(4)).to eq([@product_2])
       end
     end
+
+    describe '#search_by_name' do
+      it 'can search by name using exact-matches' do
+        expect(Product.search_by_name('test product')).to eq(@product_1)
+      end
+    end
   end
 
 end
