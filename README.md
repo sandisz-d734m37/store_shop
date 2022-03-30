@@ -7,4 +7,4 @@ The, you'll visit localhost:3000 in your browser and watch as your wildest dream
 
 Here is a visual representation of the Schema for your viewing pleasure:
 
-![Schema representation](file:///Users/sandiszthieme/Desktop/image.png)
+![Schema representation](https://user-images.githubusercontent.com/94508708/160947503-35df523e-d664-4e84-9581-b95eef7c81bf.png)
