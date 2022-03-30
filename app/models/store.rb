@@ -1,4 +1,6 @@
 class Store < ApplicationRecord
+  validates_presence_of :name, :description, :address, :rating
+
   has_many :products, dependent: :destroy
 
   def sale_status
@@ -18,6 +20,6 @@ class Store < ApplicationRecord
   end
 
   def alphabetize_asc
-     products.order(name: :asc)
+    products.order(name: :asc)
   end
 end

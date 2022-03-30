@@ -161,7 +161,7 @@ Then I see a link to sort children in alphabetical order
 When I click on the link
 I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
 
-[ ] done
+[`X`] done
 _______________________________________________________________________________
 User Story 17, Parent Update From Parent Index Page
 
@@ -217,7 +217,7 @@ I see a form that allows me to input a number value
 When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
 Then I am brought back to the current index page with only the records that meet that threshold shown.
 
-[ ] done
+[`X`] done
 _______________________________________________________________________________
 User Story 22, Parent Delete From Parent Index Page
 
@@ -241,3 +241,12 @@ I should be taken to the `child_table_name` index page where I no longer see tha
 _______________________________________________________________________________
 ITERATION 4
 _______________________________________________________________________________
+Search by name (exact match)
+
+As a visitor
+When I visit an index page ('/parents') or ('/child_table_name')
+Then I see a text box to filter results by keyword
+When I type in a keyword that is an exact match of one or more of my records and press the Search button
+Then I only see records that are an exact match returned on the page
+
+[ ] done
