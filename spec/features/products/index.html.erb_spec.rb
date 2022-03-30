@@ -131,5 +131,4 @@ RSpec.describe "products/index", type: :feature do
     expect(page).not_to have_content(@product_2.name)
     expect(page).to have_content("Nothing matches Product 3")
   end
-
 end
